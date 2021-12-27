@@ -1,13 +1,8 @@
 import React from "react";
-import { Header } from "../../layouts";
 import "../../App.css";
 
 function Home() {
-  return (
-    <div className="app">
-      <Header />
-    </div>
-  );
+  return <div className="app"></div>;
 }
 
 export default Home;

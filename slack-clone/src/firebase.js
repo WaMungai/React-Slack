@@ -1,7 +1,11 @@
 /* eslint-disable no-unused-vars */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+// import {  } from "firebase/auth";
+
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -14,7 +18,12 @@ const firebaseConfig = {
   storageBucket: "slack-clone-5c723.appspot.com",
   messagingSenderId: "662549808112",
   appId: "1:662549808112:web:17c45e08f8d8e138f29335",
-  measurementId: "G-2BVR7E3XWP"
+  measurementId: "G-2BVR7E3XWP",
 };
 
-export default firebaseConfig
+const fireBaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(fireBaseApp);
+const db = getFirestore(fireBaseApp);
+const provider = new GoogleAuthProvider();
+
+export { auth, db, provider };
