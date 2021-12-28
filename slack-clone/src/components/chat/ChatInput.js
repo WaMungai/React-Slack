@@ -3,9 +3,12 @@ import styled from "styled-components";
 import { Button } from "@material-ui/core";
 import { db } from "../../firebase";
 import { doc, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
 
 function ChatInput({ chatRef, channelName, channelId }) {
   const [input, setInput] = useState("");
+  const [user] = useAuthState(auth);
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -22,13 +25,12 @@ function ChatInput({ chatRef, channelName, channelId }) {
     });
 
     const docRef = doc(db, "rooms", channelId);
-    
+
     addDoc(collection(docRef, "messages"), {
       message,
       timestamp: serverTimestamp(),
-      user: "Adams Okode",
-      userImage:
-        "https://media-exp1.licdn.com/dms/image/C4D03AQHekuP5YZCMCA/profile-displayphoto-shrink_100_100/0/1550932957201?e=1646265600&v=beta&t=oq0Du0BzZn9L5c3m1jmPAlyn0otj-SGKSKtzcifveZc",
+      user: user?.displayName,
+      userImage: user?.photoURL,
     })
       .then((res) => {
         // console.log(res);

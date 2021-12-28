@@ -17,11 +17,15 @@ import { db } from "../../firebase";
 import { SideBarOption } from "..";
 import { collection } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
 
 function SideBar() {
   const [channels, loading, error] = useCollection(collection(db, "rooms"), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
+
+  const [user] = useAuthState(auth);
   return (
     <>
       <SideBarContainer>
@@ -30,7 +34,7 @@ function SideBar() {
             <h2> ELLAVILE HQ</h2>
             <h3>
               <FiberManualRecordIcon />
-              Adams Okode
+              {user?.displayName}
             </h3>
           </SideBarInfo>
           <CreateIcon />
