@@ -1,8 +1,13 @@
 import React from "react";
 import "../../App.css";
+import { Chat } from "../../components";
 
 function Home() {
-  return <div className="app"></div>;
+  return (
+    <>
+      <Chat />
+    </>
+  );
 }
 
 export default Home;
