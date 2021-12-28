@@ -67,7 +67,6 @@ function SideBar() {
             key={channel.id}
             id={channel.id}
             title={channel.data().name}
-            addChannelOption
           ></SideBarOption>
         ))}
       </SideBarContainer>
