@@ -1,13 +1,13 @@
-import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import styled from "styled-components";
-import "./App.css";
-import { SideBar } from "./components";
-import { auth } from "./firebase";
-import { Header } from "./layouts";
-import { Home, Login } from "./pages";
-import Spinner from "react-spinkit";
+import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import styled from 'styled-components';
+import './App.css';
+import { SideBar } from './components';
+import { auth } from './firebase';
+import { Header } from './layouts';
+import { Home, Login } from './pages';
+import Spinner from 'react-spinkit';
 
 function App() {
   const [user, loading] = useAuthState(auth);
@@ -22,7 +22,7 @@ function App() {
       </ApploadingContainer>
     );
   }
-  
+
   return (
     <div className="app">
       {!user ? (

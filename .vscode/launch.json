@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "npm run start",
+      "name": "Run",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "type": "pwa-msedge",
+      "request": "launch",
+      "name": "Launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Server/Client",
+      "configurations": ["Run", "Launch"],
+      "preLaunchTask": "${defaultBuildTask}"
+    }
+  ]
+}
