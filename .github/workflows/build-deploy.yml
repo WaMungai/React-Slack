@@ -2,7 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
         with:
           name: dist
           path: dist
-          
+
   deploy:
     name: Deploy
     needs: build
